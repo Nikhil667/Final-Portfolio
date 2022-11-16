@@ -208,7 +208,7 @@ section {
     grid-column: span 2;
   }
   .project-section {
-    height: auto;
+    height: 240vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -231,7 +231,7 @@ section {
     gap: 2em;
   }
   .project-section .project-container .parent .box {
-    height: auto;
+    height: 50vh;
     border: 1px solid white;
     background-color: #252525;
     color: #efecec;
