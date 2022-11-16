@@ -23,7 +23,7 @@ html{
 section{
   height: 100vh;
   max-width: 100%;
-  scroll-snap-align: start;
+  //scroll-snap-align: start;
 }
 
 .reveal{
@@ -302,7 +302,7 @@ section{
           position: absolute;
           top: 14%;
           right: -14%;
-          width: 50%;
+          width: 40%;
         }
         .info-container{
           display: grid;

@@ -26,7 +26,6 @@ html {
 section {
   height: 100vh;
   max-width: 100%;
-  scroll-snap-align: start;
 }
 
 .reveal {
@@ -298,7 +297,7 @@ section {
     position: absolute;
     top: 14%;
     right: -14%;
-    width: 50%;
+    width: 40%;
   }
   .contact-section .img-container .parent .info-container {
     display: grid;
