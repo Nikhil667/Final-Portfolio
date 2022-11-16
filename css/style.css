@@ -10,6 +10,7 @@
 
 body {
   font-family: "Bebas Neue";
+  scrollbar-gutter: stable both-edges;
 }
 
 html {
@@ -23,9 +24,9 @@ html {
 }
 
 section {
-  min-height: 100vh;
-  max-width: 100vw;
-  scroll-snap-align: start;
+  height: 100vh;
+  max-width: 100%;
+  scroll-snap-align: end;
 }
 
 .reveal {
@@ -60,254 +61,759 @@ section {
     stroke-dashoffset: 0;
   }
 }
-.wrapper {
-  min-height: 100vh;
-  max-width: 100vw;
-  position: relative;
-}
-.wrapper .container {
-  min-height: 100vh;
-  background-color: red;
-}
-.wrapper .container svg {
-  width: 100%;
-  margin: 1.2em;
-  fill: white;
-}
-.wrapper .container span {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: black;
-  display: flex;
-  cursor: pointer;
-}
-.wrapper .container .overlay-parent, .wrapper .container .overlay {
-  padding: 4em;
-}
-.wrapper .container .overlay-parent h1, .wrapper .container .overlay h1 {
-  font-size: 10rem;
-}
-.wrapper .container .overlay-parent p, .wrapper .container .overlay p {
-  font-size: 5rem;
-  margin-bottom: 0.5em;
-}
-
-.overlay {
-  background-color: black;
-  color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-clip-path: circle(100px at 50% 50%);
-          clip-path: circle(100px at 50% 50%);
-  -webkit-clip-path: circle(100px at var(--x, 50%) var(--y, 50%));
-          clip-path: circle(100px at var(--x, 50%) var(--y, 50%));
-  transition: -webkit-clip-path 50ms;
-  transition: clip-path 50ms;
-  transition: clip-path 50ms, -webkit-clip-path 50ms;
-}
-
-.is-open {
-  -webkit-clip-path: circle(200% at 100% 100%);
-          clip-path: circle(200% at 100% 100%);
-  transition: -webkit-clip-path 1.3s;
-  transition: clip-path 1.3s;
-  transition: clip-path 1.3s, -webkit-clip-path 1.3s;
-  transition-timing-function: cubic-bezier(1, -0.01, 0.01, 0.99);
-}
-
-.svg-container {
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  min-height: 100vh;
-  width: 50vw;
-  -webkit-clip-path: circle(65% at 100% 100%);
-          clip-path: circle(65% at 100% 100%);
-}
-.svg-container svg {
-  margin: 4em;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  max-width: 40%;
-}
-
-.third-section .container {
-  background: url("../bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80rem;
-  background-color: #00ffaa;
-  width: 100%;
-}
-.third-section .container .parent {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  place-items: center;
-  min-height: 100vh;
-}
-.third-section .container .parent .shape {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ff0080;
-  width: 54rem;
-  height: 54rem;
-  -webkit-clip-path: circle(50% at 50% 50%);
-          clip-path: circle(50% at 50% 50%);
-}
-.third-section .container .parent .shape svg {
-  width: auto;
-  height: 60%;
-}
-.third-section .container .parent p {
-  font-size: 5rem;
-  text-align: center;
-}
-
-.hobby-section {
-  background-color: #b5c0ff;
-  display: grid;
-  place-items: center;
-}
-.hobby-section .hobby-container {
-  width: 90%;
-}
-.hobby-section .hobby-container .parent {
-  max-height: 90vh;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 30vh);
-  text-align: center;
-  gap: 0.5em;
-  border-radius: 4px;
-}
-.hobby-section .hobby-container .parent .box {
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hobby-section .hobby-container .parent .box img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.hobby-section .hobby-container .parent .box:hover {
-  transform: scale(1.1);
-  transition: transform 400ms;
-}
-.hobby-section .hobby-container .parent .box p {
-  font-size: 5rem;
-  letter-spacing: 0.0925rem;
-}
-.hobby-section .hobby-container .parent .span2 {
-  grid-column: span 2;
-}
-
-.project-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #c5c5c5;
-  color: black;
-}
-.project-section .heading {
-  font-size: 5rem;
-  margin-bottom: 1rem;
-}
-.project-section .project-container {
-  width: 90%;
-}
-.project-section .project-container .parent {
-  max-height: 80vh;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  gap: 2em;
-}
-.project-section .project-container .parent .box {
-  height: 80vh;
-  border: 1px solid white;
-  background-color: #252525;
-  color: #efecec;
-  border-radius: 4px;
-  padding: 0.4em;
-}
-.project-section .project-container .parent .box .image {
-  margin-bottom: 3rem;
-}
-.project-section .project-container .parent .box .image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 2px;
-}
-.project-section .project-container .parent .box .text {
-  padding: 1em;
-}
-.project-section .project-container .parent .box .text h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.0925rem;
-}
+@media only screen and (min-width: 320px) and (max-width: 919px) {
+  .wrapper {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  .wrapper .container {
+    height: 100vh;
+    background-color: red;
+  }
+  .wrapper .container svg {
+    width: 100%;
+    margin: 1.2em;
+    fill: white;
+  }
+  .wrapper .container span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    cursor: pointer;
+  }
+  .wrapper .container .overlay-parent, .wrapper .container .overlay {
+    padding: 3em;
+  }
+  .wrapper .container .overlay-parent h1, .wrapper .container .overlay h1 {
+    font-size: 6rem;
+  }
+  .wrapper .container .overlay-parent p, .wrapper .container .overlay p {
+    font-size: 4rem;
+    margin-bottom: 0.5em;
+  }
+  .overlay {
+    background-color: black;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-clip-path: circle(50px at 50% 50%);
+            clip-path: circle(50px at 50% 50%);
+    -webkit-clip-path: circle(50px at var(--x, 50%) var(--y, 50%));
+            clip-path: circle(50px at var(--x, 50%) var(--y, 50%));
+    transition: -webkit-clip-path 50ms;
+    transition: clip-path 50ms;
+    transition: clip-path 50ms, -webkit-clip-path 50ms;
+  }
+  .is-open {
+    -webkit-clip-path: circle(200% at 100% 100%);
+            clip-path: circle(200% at 100% 100%);
+    transition: -webkit-clip-path 1.3s;
+    transition: clip-path 1.3s;
+    transition: clip-path 1.3s, -webkit-clip-path 1.3s;
+    transition-timing-function: cubic-bezier(1, -0.01, 0.01, 0.99);
+  }
+  .svg-container {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-clip-path: circle(80% at 50% 100%);
+            clip-path: circle(80% at 50% 100%);
+  }
+  .svg-container svg {
+    margin: 8em;
+    max-width: 100%;
+  }
+  .third-section .container {
+    background: url("../bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60rem;
+    background-color: #00ffaa;
+    width: 100%;
+  }
+  .third-section .container .parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    height: 100vh;
+  }
+  .third-section .container .parent .shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff0080;
+    width: 32rem;
+    height: 32rem;
+    -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+  }
+  .third-section .container .parent .shape svg {
+    width: auto;
+    height: 60%;
+  }
+  .third-section .container .parent p {
+    font-size: 4rem;
+    text-align: center;
+  }
+  .hobby-section {
+    background-color: #b5c0ff;
+    display: grid;
+    place-items: center;
+  }
+  .hobby-section .hobby-container {
+    height: 90vh;
+    width: 90%;
+  }
+  .hobby-section .hobby-container .parent {
+    height: 90vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 16%);
+    grid-auto-flow: dense;
+    text-align: center;
+    gap: 0.5em;
+    border-radius: 4px;
+  }
+  .hobby-section .hobby-container .parent .box {
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hobby-section .hobby-container .parent .box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .hobby-section .hobby-container .parent .box:hover {
+    transform: scale(1.1);
+    transition: transform 400ms;
+  }
+  .hobby-section .hobby-container .parent .box p {
+    font-size: 4rem;
+  }
+  .hobby-section .hobby-container .parent .span2 {
+    grid-column: span 2;
+  }
+  .project-section {
+    height: 250vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5c5c5;
+    color: black;
+    padding: 2em;
+  }
+  .project-section .heading {
+    font-size: 5rem;
+  }
+  .project-section .project-container {
+    width: 90%;
+  }
+  .project-section .project-container .parent {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, ifr);
+    gap: 2em;
+  }
+  .project-section .project-container .parent .box {
+    height: auto;
+    border: 1px solid white;
+    background-color: #252525;
+    color: #efecec;
+    border-radius: 4px;
+    padding: 0.4em;
+  }
+  .project-section .project-container .parent .box .image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 2px;
+  }
+  .project-section .project-container .parent .box .text {
+    padding: 1em;
+  }
+  .project-section .project-container .parent .box .text h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.0925rem;
+  }
+  .project-section .project-container .parent .box .text a {
+    color: #efecec;
+  }
+  .project-section .project-container .parent .box .text p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .project-section .project-container .parent .box .text p,
 .project-section .project-container .parent .box .text a {
-  color: #efecec;
+    font-size: 1.8rem;
+    letter-spacing: 0.0925rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-section .img-container {
+    background: url("../images/contact/bbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .contact-section .img-container .parent {
+    width: 85%;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    position: relative;
+    gap: 1em;
+    overflow: hidden;
+    padding: 1em;
+  }
+  .contact-section .img-container .parent svg {
+    position: absolute;
+    top: 14%;
+    right: -14%;
+    width: 50%;
+  }
+  .contact-section .img-container .parent .info-container {
+    display: grid;
+    gap: 1em;
+    color: white;
+  }
+  .contact-section .img-container .parent .info-container .text {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-section .img-container .parent .info-container .text h2 {
+    font-size: 4rem;
+    letter-spacing: 0.0925rem;
+  }
+  .contact-section .img-container .parent .info-container .text p {
+    font-size: 2rem;
+    letter-spacing: 0.0825rem;
+  }
+  .contact-section .img-container .parent .info-container .social {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  .contact-section .img-container .parent .info-container .social p {
+    font-size: 2rem;
+    text-decoration: underline;
+    letter-spacing: 0.0825rem;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img {
+    display: flex;
+    gap: 1.5em;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img img {
+    cursor: pointer;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img img:hover {
+    transform: translateY(-4px);
+    transition: transform 600ms;
+  }
+  .contact-section .img-container .parent .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact-section .img-container .parent .form-container .form {
+    width: 100%;
+    padding: 1em;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs label {
+    font-size: 1.8rem;
+    letter-spacing: 0.0925rem;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs input {
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs textarea {
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn {
+    font-family: "Bebas Neue";
+    font-size: 2rem;
+    background-color: #516af8;
+    color: white;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.0925rem;
+    margin-top: 0.5em;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn:hover {
+    background-color: #3451f7;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn:active {
+    background-color: #3451f7;
+    transform: translateY(2px);
+  }
 }
-.project-section .project-container .parent .box .text p,
+@media only screen and (min-width: 920px) {
+  .wrapper {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
+  .wrapper .container {
+    height: 100vh;
+    background-color: red;
+  }
+  .wrapper .container svg {
+    width: 100%;
+    margin: 1.2em;
+    fill: white;
+  }
+  .wrapper .container span {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: black;
+    display: flex;
+    cursor: pointer;
+  }
+  .wrapper .container .overlay-parent, .wrapper .container .overlay {
+    padding: 4em;
+  }
+  .wrapper .container .overlay-parent h1, .wrapper .container .overlay h1 {
+    font-size: 10rem;
+  }
+  .wrapper .container .overlay-parent p, .wrapper .container .overlay p {
+    font-size: 5rem;
+    margin-bottom: 0.5em;
+  }
+  .overlay {
+    background-color: black;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-clip-path: circle(100px at 50% 50%);
+            clip-path: circle(100px at 50% 50%);
+    -webkit-clip-path: circle(100px at var(--x, 50%) var(--y, 50%));
+            clip-path: circle(100px at var(--x, 50%) var(--y, 50%));
+    transition: -webkit-clip-path 50ms;
+    transition: clip-path 50ms;
+    transition: clip-path 50ms, -webkit-clip-path 50ms;
+  }
+  .is-open {
+    -webkit-clip-path: circle(200% at 100% 100%);
+            clip-path: circle(200% at 100% 100%);
+    transition: -webkit-clip-path 1.3s;
+    transition: clip-path 1.3s;
+    transition: clip-path 1.3s, -webkit-clip-path 1.3s;
+    transition-timing-function: cubic-bezier(1, -0.01, 0.01, 0.99);
+  }
+  .svg-container {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-height: 100vh;
+    width: 50vw;
+    -webkit-clip-path: circle(65% at 100% 100%);
+            clip-path: circle(65% at 100% 100%);
+  }
+  .svg-container svg {
+    margin: 4em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 40%;
+  }
+  .third-section .container {
+    background: url("../bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80rem;
+    background-color: #00ffaa;
+    width: 100%;
+  }
+  .third-section .container .parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    place-items: center;
+    min-height: 100vh;
+  }
+  .third-section .container .parent .shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff0080;
+    width: 54rem;
+    height: 54rem;
+    -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+  }
+  .third-section .container .parent .shape svg {
+    width: auto;
+    height: 60%;
+  }
+  .third-section .container .parent p {
+    font-size: 5rem;
+    text-align: center;
+  }
+  .hobby-section {
+    background-color: #b5c0ff;
+    display: grid;
+    place-items: center;
+  }
+  .hobby-section .hobby-container {
+    width: 90%;
+  }
+  .hobby-section .hobby-container .parent {
+    max-height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 30vh);
+    text-align: center;
+    gap: 0.5em;
+    border-radius: 4px;
+  }
+  .hobby-section .hobby-container .parent .box {
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hobby-section .hobby-container .parent .box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .hobby-section .hobby-container .parent .box:hover {
+    transform: scale(1.1);
+    transition: transform 400ms;
+  }
+  .hobby-section .hobby-container .parent .box p {
+    font-size: 5rem;
+    letter-spacing: 0.0925rem;
+  }
+  .hobby-section .hobby-container .parent .span2 {
+    grid-column: span 2;
+  }
+  .project-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5c5c5;
+    color: black;
+  }
+  .project-section .heading {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+  }
+  .project-section .project-container {
+    width: 90%;
+  }
+  .project-section .project-container .parent {
+    max-height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2em;
+  }
+  .project-section .project-container .parent .box {
+    height: 80vh;
+    border: 1px solid white;
+    background-color: #252525;
+    color: #efecec;
+    border-radius: 4px;
+    padding: 0.4em;
+  }
+  .project-section .project-container .parent .box .image {
+    margin-bottom: 3rem;
+  }
+  .project-section .project-container .parent .box .image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 2px;
+  }
+  .project-section .project-container .parent .box .text {
+    padding: 1em;
+  }
+  .project-section .project-container .parent .box .text h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.0925rem;
+  }
+  .project-section .project-container .parent .box .text a {
+    color: #efecec;
+  }
+  .project-section .project-container .parent .box .text p,
 .project-section .project-container .parent .box .text a {
-  font-size: 1.8rem;
-  letter-spacing: 0.0925rem;
-  margin-bottom: 1.5rem;
-}
-
-@-webkit-keyframes fade-left {
-  0% {
-    transform: translateX(-60px);
-    opacity: 0;
+    font-size: 1.8rem;
+    letter-spacing: 0.0925rem;
+    margin-bottom: 1.5rem;
   }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
+  @-webkit-keyframes fade-left {
+    0% {
+      transform: translateX(-60px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
-}
-
-@keyframes fade-left {
-  0% {
-    transform: translateX(-60px);
-    opacity: 0;
+  @keyframes fade-left {
+    0% {
+      transform: translateX(-60px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
+  .active.fade-left-1s {
+    -webkit-animation: fade-left 0.7s ease-in;
+            animation: fade-left 0.7s ease-in;
   }
-}
-.active.fade-left-1s {
-  -webkit-animation: fade-left 0.7s ease-in;
-          animation: fade-left 0.7s ease-in;
-}
-
-.active.fade-left-1-5s {
-  -webkit-animation: fade-left 1s ease-in;
-          animation: fade-left 1s ease-in;
-}
-
-.active.fade-left-2s {
-  -webkit-animation: fade-left 1.5s ease-in;
-          animation: fade-left 1.5s ease-in;
-}
-
-.active.fade-left-2-5s {
-  -webkit-animation: fade-left 2s ease-in;
-          animation: fade-left 2s ease-in;
+  .active.fade-left-1-5s {
+    -webkit-animation: fade-left 1s ease-in;
+            animation: fade-left 1s ease-in;
+  }
+  .active.fade-left-2s {
+    -webkit-animation: fade-left 1.5s ease-in;
+            animation: fade-left 1.5s ease-in;
+  }
+  .active.fade-left-2-5s {
+    -webkit-animation: fade-left 2s ease-in;
+            animation: fade-left 2s ease-in;
+  }
+  .project-section2 {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23373737' fill-opacity='0.24'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    display: grid;
+    place-items: center;
+  }
+  .project-section2 p {
+    font-size: 5rem;
+    letter-spacing: 0.0925rem;
+  }
+  .project-section2 .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+  }
+  .project-section2 .wrapper .heading {
+    margin-bottom: 1rem;
+  }
+  .project-section2 .wrapper .parent {
+    width: 100%;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 4em;
+  }
+  .project-section2 .wrapper .parent .container1, .project-section2 .wrapper .parent .container2 {
+    position: relative;
+    z-index: 0;
+  }
+  .project-section2 .wrapper .parent .container1 .image, .project-section2 .wrapper .parent .container2 .image {
+    height: 55%;
+    width: 85%;
+    border-radius: 8px;
+  }
+  .project-section2 .wrapper .parent .container1 .image img, .project-section2 .wrapper .parent .container2 .image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 8px;
+  }
+  .project-section2 .wrapper .parent .container1 .text, .project-section2 .wrapper .parent .container2 .text {
+    background-color: white;
+    border-radius: 8px;
+    height: 55%;
+    width: 85%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: left;
+    padding: 2em;
+    border: 1px solid gray;
+    -o-object-fit: cover;
+       object-fit: cover;
+    z-index: -1;
+  }
+  .project-section2 .wrapper .parent .container1 .text h2, .project-section2 .wrapper .parent .container2 .text h2 {
+    font-size: 4rem;
+    letter-spacing: 0.0925rem;
+  }
+  .project-section2 .wrapper .parent .container1 .text p, .project-section2 .wrapper .parent .container2 .text p {
+    margin-bottom: 2rem;
+  }
+  .project-section2 .wrapper .parent .container1 .text p, .project-section2 .wrapper .parent .container1 .text a, .project-section2 .wrapper .parent .container2 .text p, .project-section2 .wrapper .parent .container2 .text a {
+    color: #000;
+    font-size: 2rem;
+    letter-spacing: 0.0625rem;
+  }
+  .contact-section .img-container {
+    background: url("../images/contact/bbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .contact-section .img-container .parent {
+    width: 80%;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-section .img-container .parent svg {
+    position: absolute;
+    top: -5%;
+    left: 40%;
+  }
+  .contact-section .img-container .parent .info-container {
+    display: grid;
+    place-content: center;
+    gap: 2em;
+    color: white;
+  }
+  .contact-section .img-container .parent .info-container .text {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-section .img-container .parent .info-container .text h2 {
+    font-size: 10rem;
+    letter-spacing: 0.0925rem;
+  }
+  .contact-section .img-container .parent .info-container .text p {
+    font-size: 2.5rem;
+    letter-spacing: 0.0625rem;
+  }
+  .contact-section .img-container .parent .info-container .social {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+  .contact-section .img-container .parent .info-container .social p {
+    font-size: 2.5rem;
+    text-decoration: underline;
+    letter-spacing: 0.0625rem;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img {
+    display: flex;
+    gap: 1.5em;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img img {
+    cursor: pointer;
+  }
+  .contact-section .img-container .parent .info-container .social .social-img img:hover {
+    transform: translateY(-4px);
+    transition: transform 600ms;
+  }
+  .contact-section .img-container .parent .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact-section .img-container .parent .form-container .form {
+    width: 70%;
+    padding: 2em;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs label {
+    font-size: 2rem;
+    letter-spacing: 0.0925rem;
+    margin-bottom: 0.5em;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs input {
+    padding: 0.5em;
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs textarea {
+    border-radius: 4px;
+    border: 1px solid gray;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn {
+    font-family: "Bebas Neue";
+    font-size: 2.2rem;
+    background-color: #516af8;
+    color: white;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.0925rem;
+    margin-top: 0.5em;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn:hover {
+    background-color: #3451f7;
+  }
+  .contact-section .img-container .parent .form-container .form .form-inputs #btn:active {
+    background-color: #3451f7;
+    transform: translateY(2px);
+  }
 }/*# sourceMappingURL=style.css.map */
