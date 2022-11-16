@@ -208,7 +208,7 @@ section {
     grid-column: span 2;
   }
   .project-section {
-    height: 250vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
