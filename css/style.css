@@ -296,7 +296,7 @@ section {
   .contact-section .img-container .parent svg {
     position: absolute;
     top: 14%;
-    right: -14%;
+    right: -10%;
     width: 40%;
   }
   .contact-section .img-container .parent .info-container {
