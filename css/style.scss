@@ -23,7 +23,7 @@ html{
 section{
   height: 100vh;
   max-width: 100%;
-  scroll-snap-align: end;
+  scroll-snap-align: start;
 }
 
 .reveal{
@@ -95,6 +95,7 @@ section{
     clip-path: circle(50px at 50% 50%);
     clip-path: circle(50px at var(--x, 50%) var(--y, 50%));
     transition: clip-path 50ms;
+    touch-action: auto;
   }
   
   .is-open{
